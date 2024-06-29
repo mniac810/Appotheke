@@ -65,6 +65,6 @@ if (isset($_SESSION['user_username'])) {
      }
   }
 }else {
-	header("Location: ../../login/index.php");
+	header("Location: ../../login/login.php");
 	exit;
 }

@@ -54,7 +54,7 @@
                 <!-- 
                 <div class="sign-up">
                     <label>
-                        <a href="../signup/index.php">Sign up Here</a>
+                        <a href="../signup/signup.php">Sign up Here</a>
                     </label>
                 </div>
 

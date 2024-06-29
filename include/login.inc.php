@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
             $_SESSION["login_data"] = $login_data;
 
             // Send user back to login page
-            header("Location: ../login/index.php");
+            header("Location: ../login/login.php");
             die();
         }
         
@@ -80,6 +80,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
 } else {
     // Handle the case where the user didn't submit the form
-    header("Location: ../login/index.php");
+    header("Location: ../login/login.php");
     die();
 }

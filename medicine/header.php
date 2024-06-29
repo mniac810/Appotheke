@@ -22,7 +22,7 @@
             
             <?php if ($_SESSION['user_role'] == 'Admin') { ?>
             <li>
-                <a href="../signup/index.php">
+                <a href="../signup/signup.php">
                     <i class='bx bx-user-plus'></i>
                     <span>Create Account</span>
                 </a>

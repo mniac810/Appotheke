@@ -97,6 +97,6 @@
     check_signup_errors();
     }
     else{
-        header("Location: ../login/index.php");
+        header("Location: ../login/login.php");
     }
 ?>

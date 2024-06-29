@@ -17,7 +17,7 @@
         </div>
         <ul class="menu">
             <li><a href="#"><i class='bx bxs-dashboard'></i><span>Dashboard</span></a></li>
-            <li><a href="../signup/index.php"><i class='bx bx-user' ></i><span>Create Account</span></a></li>
+            <li><a href="../signup/signup.php"><i class='bx bx-user' ></i><span>Create Account</span></a></li>
             <li><a href="../sale/addSale.php"><i class='bx bx-line-chart' ></i><span>Sale</span></a></li>
             <li><a href="../supplier/addSupplier.php"><i class='bx bx-package' ></i><span>Suppliers</span></a></li>
             <li><a href="../medicine/addMedicine.php"><i class='bx bxs-capsule'></i><span>Inventory</span></a></li>

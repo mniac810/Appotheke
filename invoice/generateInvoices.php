@@ -40,7 +40,7 @@
             </li>
             <?php if ($_SESSION['user_role'] == 'Admin') { ?>
             <li>
-                <a href="../signup/index.php">
+                <a href="../signup/signup.php">
                     <i class='bx bx-user' ></i>
                     <span>Create Account</span>
                 </a>
@@ -296,6 +296,6 @@
 
 <?php
     } else {
-        header("Location: ../login/index.php");
+        header("Location: ../login/login.php");
         exit();
     }

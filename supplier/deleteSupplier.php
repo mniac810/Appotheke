@@ -12,5 +12,5 @@ if (isset($_SESSION['user_username']) && $_SESSION['user_role'] == 'Admin') {
         redirect('../supplier/viewSupplier.php', 'Invalid parameter.');
     }
 } else {
-    header("Location: ../login/index.php");
+    header("Location: ../login/login.php");
 }

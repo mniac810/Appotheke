@@ -50,14 +50,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["signup_data"] = $signup_data;
 
             //Send user back to signup page
-            header("Location: ../signup/index.php");
+            header("Location: ../signup/signup.php");
             //stop running
             die();
         }
 
         create_user($pdo, $Username, $FullName, $Pwd, $Email, $Role);
         //redirect user back to front page after signing up into the website
-        header("Location: ../login/index.php?signup=success");
+        header("Location: ../login/login.php?signup=success");
 
         //close connection and statement
         $pdo = null;
@@ -71,6 +71,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 else {
     //Handle the case where the user didn't submit the form
-    header("Location: ../signup/index.php");
+    header("Location: ../signup/signup.php");
     die();
 }

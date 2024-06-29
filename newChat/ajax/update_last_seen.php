@@ -18,6 +18,6 @@ if (isset($_SESSION['user_username'])) {
 	$stmt->execute([$id]);
 
 }else {
-	header("Location: ../../login/index.php");
+	header("Location: ../../login/login.php");
 	exit;
 }

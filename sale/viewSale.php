@@ -106,7 +106,7 @@
             echo '<h4>No invoice found.</h4>';
         }
         }else {
-            header("Location: ../login/index.php");
+            header("Location: ../login/login.php");
         }
 ?>
 
