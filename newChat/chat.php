@@ -33,20 +33,22 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Chat App</title>
+	<title>Appotheke</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 	<link rel="stylesheet" 
 	      href="css/style.css">
-	<link rel="icon" href="img/logo.png">
+	<!-- <link rel="icon" href="img/logo.png"> -->
+	<link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="d-flex
+			gradient
              justify-content-center
              align-items-center
              vh-100">
-    <div class="w-400 shadow p-4 rounded">
+    <div class="w-400 shadow p-4 rounded bg-white">
     	<a href="home.php"
-    	   class="fs-4 link-dark">&#8592;</a>
+    	   class="btn btn-danger"><i class='bx bx-left-arrow-alt'></i></a>
 
     	   <div class="d-flex align-items-center">
 
@@ -104,7 +106,7 @@
 			   </div>
     	   	<?php } ?>
     	   </div>
-    	   <div class="input-group mb-3">
+    	   <div class="input-group mb-2">
     	   	   <textarea cols="3"
     	   	             id="message"
     	   	             class="form-control"></textarea>

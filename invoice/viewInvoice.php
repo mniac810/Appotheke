@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard Design</title>
+    <title>Appotheke</title>
     <link rel="stylesheet" href="view_style.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
@@ -23,7 +23,7 @@
             <li><a href="../medicine/addMedicine.php"><i class='bx bxs-capsule'></i><span>Inventory</span></a></li>
             <li><a href="../customer/addCustomer.php"><i class='bx bx-cog'></i><span>Customers</span></a></li>
             <li class="active"><a href="../invoice/invoiceForm.php"><i class='bx bx-credit-card' ></i><span>Invoices</span></a></li>
-            <li><a href="../newChat/chat.php""><i class='bx bx-conversation' ></i><span>Messages</span></a></li>
+            <li><a href="../newChat/chat.php"><i class='bx bx-conversation' ></i><span>Messages</span></a></li>
             <li><a href="../employee/viewPharmacist.php"><i class='bx bx-user-plus'></i><span>Employee</span></a></li>
             <li class="logout"><a href="#"><i class='bx bx-log-out bx-rotate-180' ></i><span>Logout</span></a></li>
         </ul>

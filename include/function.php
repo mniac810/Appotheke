@@ -171,15 +171,15 @@ function getCount($tableName){
     }
 }
 
-// function getSearch($tableName, $searchQuery = '') {
-//     global $conn;
+function getSearch($tableName, $searchQuery = '') {
+    global $conn;
 
-//     $table = validate($tableName);
+    $table = validate($tableName);
 
-//     $query = "SELECT * FROM $table" . $searchQuery;
-//     $result = mysqli_query($conn, $query);
-//     return $result;
-// }
+    $query = "SELECT * FROM $table" . $searchQuery;
+    $result = mysqli_query($conn, $query);
+    return $result;
+}
 
 
 
@@ -188,3 +188,14 @@ function getCount($tableName){
 //     unset($_SESSION['loggedIn']);
 //     unset($_SESSION['loggedInUser']);
 // }
+
+//Json Response
+function jsonResponse($status, $status_type, $message){
+    $response = [
+        'status' => $status,
+        'message' => $message,
+        'status_type' => $status_type
+    ];
+    echo json_encode($response);
+    return json_encode($response);
+}

@@ -487,3 +487,12 @@ body {
     background-color: #eeecfd !important;
     word-wrap: break-word;
 }
+
+.quantityInput{
+    width: 50px !important;
+    padding: 6px 3px;
+    text-align: center;
+    border: 1px solid #cfb1b1;
+    outline: 0;
+    margin-right: 1px;
+}

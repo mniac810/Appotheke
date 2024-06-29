@@ -10,12 +10,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard Design</title>
+    <title>Pharmacy Management System - Appotheke</title>
     <link rel="stylesheet" href="style.css">
     <!--Font for icon (cdn link)-->
     <!-- Boxicons JS -->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
 </head>
+
 <body>
     <!-- Sidebar Start -->
     <div class="sidebar">
@@ -54,11 +55,19 @@
             <?php if ($_SESSION['user_role'] == 'Admin') { ?> 
             <li>
                 <a href="../medicine/addMedicine.php">
+                    <i class='bx bxs-capsule' ></i>
+                    <span>Inventory</span>
+                </a>
+            </li>
+            <?php }
+            else {?>
+            <li>
+                <a href="../medicine/viewMedicine.php">
                     <i class='bx bx-capsule' ></i>
                     <span>Inventory</span>
                 </a>
             </li>
-            <?php }?> 
+            <?php } ?> 
 
             <li>
                 <a href="../customer/addCustomer.php">
@@ -270,11 +279,11 @@
                         <div class="qcamount--value1">
                             <span class="value">
                                 <?php
-                                    $medicine_sold = mysqli_query($conn, "SELECT DISTINCT Id_medicine FROM sales");
-                                    if($medicine_sold) {
-                                        if(mysqli_num_rows($medicine_sold) > 0){
-                                            $totalSold = mysqli_num_rows($medicine_sold);
-                                            echo $totalSold;
+                                    $medicine_sold_query = mysqli_query($conn, "SELECT SUM(quantity) AS total_quantity FROM invoice_medicines");
+                                    if($medicine_sold_query) {
+                                        $total_medicine_sold = mysqli_fetch_assoc($medicine_sold_query);
+                                        if($total_medicine_sold){
+                                            echo $total_medicine_sold['total_quantity'];
                                         } else {
                                             echo "0";
                                         }

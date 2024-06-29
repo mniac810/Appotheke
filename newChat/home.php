@@ -22,19 +22,22 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Chat App - Home</title>
+	<title>Appotheke</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 	<link rel="stylesheet" 
 	      href="css/style.css">
-	<link rel="icon" href="img/logo.png">
+	<!-- <link rel="icon" href="img/logo.png"> -->
+	<link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="d-flex
+			gradient
              justify-content-center
              align-items-center
              vh-100">
     <div class="p-2 w-400
-                rounded shadow">
+                rounded shadow
+				bg-white">
     	<div>
     		<div class="d-flex
     		            mb-3 p-3 bg-light
@@ -42,12 +45,13 @@
 			            align-items-center">
     			<div class="d-flex
     			            align-items-center">
+					<img src="../image/Logo.png" class="w-25">
     			    <!-- <img src="uploads/<?=$user['p_p']?>"
     			         class="w-25 rounded-circle"> -->
-                    <h3 class="fs-xs m-2"><?=$user['Username']?></h3> 
+                    <h3 class="display-4 fs-sm m-2"><?=$user['Username']?></h3> 
     			</div>
     			<a href="../dashboard/index.php"
-    			   class="btn btn-dark">Return</a>
+    			   class="btn btn-danger"><i class='bx bx-log-out'></i></a>
     		</div>
 
     		<div class="input-group mb-3">
@@ -91,8 +95,8 @@
 	    			</li>
     			    <?php } ?>
     			<?php }else{ ?>
-    				<div class="alert alert-info 
-    				            text-center">
+    				<div class="alert 
+    				            text-center bg-white">
 					   <i class="fa fa-comments d-block fs-big"></i>
                        No messages yet, Start the conversation
 					</div>

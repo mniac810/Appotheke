@@ -10,7 +10,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard Design</title>
+    <title>Appotheke</title>
     <link rel="stylesheet" href="style.css">
     <!--Font for icon (cdn link)-->
     <!-- Boxicons JS -->

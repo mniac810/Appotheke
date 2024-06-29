@@ -13,13 +13,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Design</title>
-    <link rel="stylesheet" href="view_style.css">
-    <link rel="stylesheet" href="style.css">
+    <title>Appotheke</title>
+
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="view_style.css">
+    <link rel="stylesheet" href="style.css">
+    
     <style>
         .table-responsive {
             overflow-x: auto;
@@ -46,7 +48,7 @@
                 <li><a href="../sale/viewSale.php"><i class='bx bx-line-chart'></i><span>Sale</span></a></li>
                 <li><a href="../supplier/addSupplier.php"><i class='bx bx-package'></i><span>Suppliers</span></a></li>
                 <li><a href="../medicine/addMedicine.php"><i class='bx bxs-capsule'></i><span>Inventory</span></a></li>
-                <li><a href="../customer/addCustomer.php"><i class='bx bx-cog'></i><span>Customers</span></a></li>
+                <li><a href="../customer/addCustomer.php"><i class='bx bx-street-view'></i><span>Customers</span></a></li>
                 <li><a href="../invoice/invoiceForm.php"><i class='bx bx-credit-card'></i><span>Invoices</span></a></li>
                 <li><a href="../newChat/chat.php"><i class='bx bx-conversation'></i><span>Messages</span></a></li>
                 <li class="active"><a href="#"><i
@@ -87,11 +89,6 @@
         <!-- Title -->
         <div class="supplier-items-container">
             <ul class="supplier-menu">
-                <li class="supplier-item">
-                    <a href="../signup/index.php">
-                        <span>Add Pharmacist</span>
-                    </a>
-                </li>
                 <?php if (isset($_SESSION['user_username'])) { ?>
                 <li class="supplier-item active">
                     <span>View Pharmacist</span>

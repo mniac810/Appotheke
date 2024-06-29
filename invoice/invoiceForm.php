@@ -1,225 +1,173 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dashboard Design</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <!-- Sidebar Start -->
-    <div class="sidebar">
-        <div class="logo">
-            <img src="../image/Logo.png" alt="Logo">
-            <span class="brand-name">APPOTHEKE</span>
+<?php
+    require_once('../include/function.php');
+    if (isset($_SESSION['user_username'])){
+        include('header.php');
+?>
+
+
+<!-- Modal to add new customer if phone number is not recognized -->
+<div class="modal fade" id="addCustomerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Customer</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mt-3">
+            <label for="c_name">Enter Customer Name</label>
+            <input type="text" id="c_name" class="form-control" />
         </div>
-        <ul class="menu">
-            <li>
-                <a href="../dashboard/index.php">
-                    <i class='bx bxs-dashboard'></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-
-            <!-- <li>
-                <a href="#">
-                    <i class='bx bx-bell' ></i>
-                    <span>Notifications</span>
-                </a>
-            </li> -->
-
-            <li>
-                <a href="../signup/index.php">
-                    <i class='bx bx-user' ></i>
-                    <span>Create Account</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="../sale/addSale.php">
-                    <i class='bx bx-line-chart' ></i>
-                    <span>Sale</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="../supplier/addSupplier.php">
-                    <i class='bx bx-package'></i>
-                    <span>Suppliers</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="../medicine/addMedicine.php">
-                    <i class='bx bxs-capsule' ></i>
-                    <span>Inventory</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="../customer/addCustomer.php">
-                    <i class='bx bx-cog'></i>
-                    <span>Customers</span>
-                </a>
-            </li>
-            
-            <li class="active">
-                <a href="#">
-                    <i class='bx bx-credit-card' ></i>
-                    <span>Invoices</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="../chat/src/App.jsx">
-                    <i class='bx bx-conversation' ></i>
-                    <span>Messages</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="../employee/viewPharmacist.php">
-                    <i class='bx bx-user-plus'></i>
-                    <span>Employee</span>
-                </a>
-            </li>
-
-            <li class="logout">
-                <a href="#">
-                    <i class='bx bx-log-out bx-rotate-180' ></i>
-                    <span>Logout</span>
-                </a>
-            </li>
-        </ul>
-
+        <div class="mt-3">
+            <label for="c_phone">Enter Customer's phone number</label>
+            <input type="text" id="c_phone" class="form-control" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button id="saveCustomerBtn" type="button" class="btn btn-primary saveCustomer">Save</button>
+      </div>
     </div>
+  </div>
+</div>
 
-    <div class="main--content">
-        <div class="header--wrapper">
-            <div class="header--title">
-                <h2>Hello Ngoc Truong,</h2>
-                <span>Invoice</span>
-            </div>
-            <div class="user--info">
-                <div class="search--box">
-                    <i class='bx bx-search'></i>
-                    <input type="text"
-                    placeholder="Search..." />
-                        
-            </div>
-            <img src="../login/img/img.png" alt="user-pic">
-        </div>
-    </div>
-
-            <!-- Title -->
-                <div class="supplier-items-container">
-            <ul class="supplier-menu">
-                <li class="supplier-item active">
-                    <span>Generate Invoices</span>
-                </li>
-                <li class="supplier-item">
-                    <a href = "../invoice/viewInvoice.php">
-                        <span>View Invoices</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-    <!-- Invoice Form starts here-->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-
-
-                <div class="card mt-4">
-                    <div class="card-header">
-                        <h4>Invoice Form
-                            <a href="javascript:void(0)" class="add-more-form float-end btn btn-primary">ADD MORE</a>
-                        </h4>
-                    </div>
-                    <div class="card-body">
-
-                        <form action="../invoice/invoiceFormHandler.php" method="POST">
-                        
-                            <div class="main-form mt-3 border-bottom">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group mb-2">
-                                            <label for="">Medicine ID</label>
-                                            <input type="ID" name="medicineID[]" class="form-control" required placeholder="Enter Medicine ID">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group mb-2">
-                                            <label for="">Quantity</label>
-                                            <input type="number" name="Quantity[]" class="form-control" required placeholder="Enter Quantity">
-                                        </div>
+<!-- Invoice Form starts here-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h4>Invoice Form</h4>
+                </div>
+                <div class="card-body">
+                    <?php alertMessage(); ?>
+                    <form action="invoiceFormHandler.php" method="POST">
+                        <div class="main-form mt-4 border-bottom">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="medicine_name">Select Medicine</label>
+                                    <select id="medicine_name" name="medicine_name[]" class="form-select mySelect2" required>
+                                        <option value="">Select medicine</option>
+                                        <?php
+                                            $conn = mysqli_connect("localhost", "root", "", "appotheke");
+                                            if ($conn === false) {
+                                                die("ERROR: Could not connect. " . mysqli_connect_error());
+                                            }
+                                            $sql = "SELECT Id, medicine_name FROM medicines";
+                                            $result = mysqli_query($conn, $sql);
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while ($medicineItem = mysqli_fetch_assoc($result)) {
+                                                    echo '<option value="' . $medicineItem['Id'] . '">' . $medicineItem['medicine_name'] . '</option>';
+                                                }
+                                            } else {
+                                                echo '<option value="">No medicine found.</option>';
+                                            }
+                                            mysqli_close($conn);
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group mb-2">
+                                        <label for="quantity">Quantity</label>
+                                        <input id="quantity" type="number" name="quantity[]" class="form-control" required placeholder="Enter Quantity" min="1">
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="paste-new-forms"></div>
-
-                            <button type="submit" name="save_multiple_data" class="btn btn-primary">Save Multiple Data</button>
-                        </form>
-
-                    </div>
+                        </div>
+                        <button type="submit" name="save_multiple_data" class="btn btn-primary">Add Item to Invoice</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js" ></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+<?php 
+    // print_r($_SESSION['medicineItems']); 
+?>
 
-    <script>
-        $(document).ready(function () {
+<div class="col-md-12">
+        <div class = "card mt-4">
+            <div class = "card-header">
+                <h4>Medicines</h4>
+            </div>
+            <div class="card-body">
+            <?php
+                if (isset($_SESSION['medicineItems']) && !empty($_SESSION['medicineItems'])) {
+                    $sessionMedicines = $_SESSION['medicineItems'];
+                    ?>
+                            <div class="table-responsive mb-3">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#NO</th>
+                                            <th>Medicine Name</th>
+                                            <th>Price</th>
+                                            <th>Type</th>
+                                            <th>ID Supplier</th>
+                                            <th>Quantity</th>
+                                            <th>Expiry date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($sessionMedicines as $key => $item) : ?>
+                                            <tr>
+                                                <td><?= $key + 1; ?></td>
+                                                <td><?= $item['medicine_name']; ?></td>
+                                                <td><?= number_format($item['Price'] * $item['quantity'],0); ?></td>
+                                                <td><?= $item['Type']; ?></td>
+                                                <td><?= $item['Id_supplier']; ?></td>
+                                                <td>
+                                                    <div class="input-group qtyBox">
+                                                        <button class="input-group-text decrement">-</button>
+                                                        <input type="text" value="<?=$item['quantity']; ?>" class="qty quantityInput">
+                                                        <button class="input-group-text increment">+</button>
+                                                    </div>
+                                                </td>
+                                                <td><?= $item['expiry_date']; ?></td>
+                                                <td>
+                                                    <a href="invoiceItemDelete.php?index=<?= $key; ?>" class="btn btn-danger">Remove</a>
+                                                </td>
+                                            </tr>
+                                            <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div> 
 
-            $(document).on('click', '.remove-btn', function () {
-                $(this).closest('.main-form').remove();
-            });
-            
-            $(document).on('click', '.add-more-form', function () {
-                $('.paste-new-forms').append('<div class="main-form mt-3 border-bottom">\
-                                <div class="row">\
-                                    <div class="col-md-4">\
-                                        <div class="form-group mb-2">\
-                                            <label for="">Medicine ID</label>\
-                                            <input type="text" name="medicineID[]" class="form-control" required placeholder="Enter Medicine ID">\
-                                        </div>\
-                                    </div>\
-                                    <div class="col-md-4">\
-                                        <div class="form-group mb-2">\
-                                            <label for="">Quantity</label>\
-                                            <input type="number" name="quantity[]" class="form-control" required placeholder="Enter Quantity">\
-                                        </div>\
-                                    </div>\
-                                    <div class="col-md-4">\
-                                        <div class="form-group mb-2">\
-                                            <br>\
-                                            <button type="button" class="remove-btn btn btn-danger">Remove</button>\
-                                        </div>\
-                                    </div>\
-                                </div>\
-                            </div>');
-            });
+                            <div class="mt-2">
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>Select Payment Method</label>
+                                        <select id="payment_mode" class="form-select">
+                                            <option value="">--Select Payment--</option>
+                                            <option value="Cash Payment">Cash Payment</option>
+                                            <option value="Online Payment">Online Payment</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Enter Customer Phone Number</label>
+                                        <input type="text" id="cphone" class="form-control" />
 
-        });
-    </script>
-    <!-- Invoice Form ends here -->
+                                    </div>
+                                    <div class="col-md-4">
+                                        <br/>
+                                        <button type="button" id="proceedToPlaceBtn" class="btn btn-warning w-100 proceedToPlace">Proceed to place order</button>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php
+                            } else {
+                                echo '<h5> No Items Added </h5>';
+                            }
+                        ?>                   
+            </div>
+        </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-        let subMenu = document.getElementById("subMenu");
-        function ToggleMenu(){
-            subMenu.classList.toggle("open-menu");
-        }
-    });
-    </script>
-
-
-</body>
-</html>
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+<?php
+    include('footer.html');  
+    }else {
+        header("Location: ../login/index.php");
+    }
+?>

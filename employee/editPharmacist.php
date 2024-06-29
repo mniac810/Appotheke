@@ -17,60 +17,38 @@ if (isset($_SESSION['user_username']) && $_SESSION['user_role'] == 'Admin') {
             $isUpdate = isset($_POST['updatePharmacist']);
             $currentPharmacistId = $isUpdate ? validate($_POST['currentPharmacistId']) : null;
 
-            if ($username != '' && $password != '' && $fullname != '' && $email != '' && $role != '') {
-                $usernameCheck = mysqli_query($conn, "SELECT * FROM pharmacists WHERE Username='$username'");
-                $emailCheck = mysqli_query($conn, "SELECT * FROM pharmacists WHERE Email='$email'");
-                
-                if ($usernameCheck && $emailCheck) {
-                    if (mysqli_num_rows($usernameCheck) > 0) {
-                        $existingUsername = mysqli_fetch_assoc($usernameCheck);
-                        if (!$isUpdate || $existingUsername['Id'] != $currentPharmacistId) {
-                            redirect('../employee/editPharmacist.php', 'Username already used by another pharmacist account');
-                        }
-                    }
-                    if (mysqli_num_rows($emailCheck) > 0) {
-                        $existingEmail = mysqli_fetch_assoc($emailCheck);
-                        if (!$isUpdate || $existingEmail['Id'] != $currentPharmacistId) {
-                            redirect('../employee/editPharmacist.php', 'Email already used by another pharmacist account');
-                        }
+            $pharmacist_data = [
+                'Username' => $username,
+                'Pwd' => $password,
+                'FullName' => $fullname,
+                'Email' => $email,
+                'Role' => $role,
+            ];
+
+            if ($isUpdate) {
+                $result = update('pharmacists', $currentPharmacistId, $pharmacist_data);
+                header("Location: ../include/logout.inc.php");
+                exit();
+
+                // Update session variable if the current user is updated
+                if ($result) {
+                    if ($_SESSION['user_username'] == $_POST['currentUsername']) {
+                        $_SESSION['user_username'] = $username;
                     }
                 }
-
-                $pharmacist_data = [
-                    'Username' => $username,
-                    'Pwd' => $password,
-                    'FullName' => $fullname,
-                    'Email' => $email,
-                    'Role' => $role,
-                ];
-
-                if ($isUpdate) {
-                    $result = update('pharmacists', $currentPharmacistId, $pharmacist_data);
+                
+            } else {
+                $result = insert('pharmacists', $pharmacist_data);
+                if ($result) {
+                    // If pharmacist is created successfully, log out the user
                     header("Location: ../include/logout.inc.php");
                     exit();
-
-                    // Update session variable if the current user is updated
-                    if ($result) {
-                        if ($_SESSION['user_username'] == $_POST['currentUsername']) {
-                            $_SESSION['user_username'] = $username;
-                        }
-                    }
-                    
                 } else {
-                    $result = insert('pharmacists', $pharmacist_data);
-                    if ($result) {
-                        // If pharmacist is created successfully, log out the user
-                        header("Location: ../include/logout.inc.php");
-                        exit();
-                    } else {
-                        $message = 'Something went wrong';
-                    }
+                    $message = 'Something went wrong';
                 }
-
-                redirect('../employee/editPharmacist.php', $message);
-            } else {
-                redirect('../employee/editPharmacist.php', 'Please fill all required fields');
             }
+
+            redirect('../employee/editPharmacist.php', $message);
         }
     }
 ?>
@@ -80,7 +58,7 @@ if (isset($_SESSION['user_username']) && $_SESSION['user_role'] == 'Admin') {
 
 <head>
     <meta charset="UTF-8">
-    <title>Pharmacy Management System</title>
+    <title>Pharmacy Management System - Appotheke</title>
     <link rel="stylesheet" href="view_style.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
@@ -118,7 +96,7 @@ if (isset($_SESSION['user_username']) && $_SESSION['user_role'] == 'Admin') {
             <li><a href="../sale/viewSale.php"><i class='bx bx-line-chart'></i><span>Sale</span></a></li>
             <li><a href="../supplier/addSupplier.php"><i class='bx bx-package'></i><span>Suppliers</span></a></li>
             <li><a href="../medicine/addMedicine.php"><i class='bx bxs-capsule'></i><span>Inventory</span></a></li>
-            <li><a href="../customer/addCustomer.php"><i class='bx bx-cog'></i><span>Customers</span></a></li>
+            <li><a href="../customer/addCustomer.php"><i class='bx bx-street-view'></i><span>Customers</span></a></li>
             <li><a href="../invoice/invoiceForm.php"><i class='bx bx-credit-card'></i><span>Invoices</span></a></li>
             <li><a href="../newChat/chat.php"><i class='bx bx-conversation'></i><span>Messages</span></a></li>
             <li class="active"><a href="#"><i class='bx bx-user-plus'></i><span>Employee</span></a></li>

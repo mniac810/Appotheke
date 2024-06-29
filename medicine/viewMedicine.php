@@ -4,8 +4,8 @@ include('../include/databaseHandler.inc.php');
 
 // session_start();
 require_once('../include/config_session.inc.php');
-if (isset($_SESSION['user_username']) && $_SESSION['user_role'] == 'Admin') {
-    include('../medicine/header.html');
+if (isset($_SESSION['user_username'])) {
+    include('../medicine/header.php');
 ?>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -48,11 +48,14 @@ if (isset($_SESSION['user_username']) && $_SESSION['user_role'] == 'Admin') {
         <!-- Title -->
         <div class="supplier-items-container">
             <ul class="supplier-menu">
+                <?php if (isset($_SESSION['user_username']) && ($_SESSION['user_role'] == "Admin")) { ?>
                 <li class="supplier-item">
                     <a href="../medicine/addMedicine.php">
                         <span>Add Medicine</span>
                     </a>
                 </li>
+                <?php } ?>
+
                 <?php if (isset($_SESSION['user_username'])) { ?>
                 <li class="supplier-item active">
                     <span>View Medicine</span>
@@ -132,7 +135,9 @@ if (isset($_SESSION['user_username']) && $_SESSION['user_role'] == 'Admin') {
                                         <th>Supplier ID</th>
                                         <th>Quantity</th>
                                         <th>Expiry Date</th>
+                                        <?php if ($_SESSION['user_role'] == 'Admin') : ?>
                                         <th>Actions</th>
+                                        <?php endif; ?>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -145,12 +150,14 @@ if (isset($_SESSION['user_username']) && $_SESSION['user_role'] == 'Admin') {
                                         <td><?= $medicine['Id_supplier']; ?></td>
                                         <td><?= $medicine['quantity']; ?></td>
                                         <td><?= $medicine['expiry_date']; ?></td>
+                                        <?php if ($_SESSION['user_role'] == 'Admin') : ?>
                                         <td>
                                             <div class="btn-group" role="group">
                                                 <a href="../medicine/editMedicine.php?Id=<?= $medicine['Id']; ?>" class="btn btn-primary">Edit</a>
                                                 <a href="../medicine/deleteMedicine.php?Id=<?= $medicine['Id']; ?>" class="btn btn-danger">Remove</a>
                                             </div>
                                         </td>
+                                        <?php endif; ?>
                                     </tr>
                                     <?php endforeach; ?>
                                 </tbody>
