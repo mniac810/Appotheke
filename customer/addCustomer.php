@@ -49,8 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 // session_start();
 require_once('../include/config_session.inc.php');
-if (isset($_SESSION['user_username']) && $_SESSION['user_role'] == 'Admin') {
-include('../customer/header.html');
+if (isset($_SESSION['user_username'])) {
+include('../customer/header.php');
 ?>
 
 <div class="main--content">

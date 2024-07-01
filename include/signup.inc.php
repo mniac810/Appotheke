@@ -1,6 +1,7 @@
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //echo "Clicked";
     // $Id = $_POST["Id"];
     $Username = $_POST["Username"];
     $Pwd = $_POST["Pwd"];

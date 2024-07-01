@@ -1,23 +1,22 @@
-version: '3.7'
 services:
   www:
-    image: php:apache
+    image: php:7.1-apache
     volumes:
-      -"./:/var/www/html" #sync project dir with container web dir
+      - "./:/var/www/html"
     ports:
-      - "80:80"
+      - 80:80
       - 443:443
   db:
     image: mysql:latest
     environment:
-      - MYSQL_DATABASE: appotheke
-      - MYSQL_USER: user
-      - MYSQL_PASSWORD: password
-      - MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      - MYSQL_DATABASE=appotheke
+      - MYSQL_USER=appotheke
+      - MYSQL_PASSWORD=password
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:
-      - 8080:80
+      - 8001:80
     environment:
-      - PMA_HOST: db
-      - PMA_PORT: 3306
+      - PMA_HOST=db
+      - PMA_PORT=3306

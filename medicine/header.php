@@ -19,7 +19,6 @@
         </div>
         <ul class="menu">
             <li><a href="../dashboard/index.php"><i class='bx bxs-dashboard'></i><span>Dashboard</span></a></li>
-            <li><a href="../dashboard/index.php"><i class='bx bxs-dashboard'></i><span>Dashboard</span></a></li>
             
             <?php if ($_SESSION['user_role'] == 'Admin') { ?>
             <li><a href="../signup/index.php"><i class='bx bx-user-plus'></i><span>Create Account</span></a></li>
