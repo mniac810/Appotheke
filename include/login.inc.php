@@ -5,9 +5,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     $Username = $_POST['Username'];
     $Pwd = $_POST['Pwd'];
 
-    echo "Username: $Username, Password: $Pwd";
-
-
     try {
         // Include necessary files
         require_once 'databaseHandler.inc.php';
@@ -50,12 +47,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
             $_SESSION["login_data"] = $login_data;
 
             // Send user back to login page
-            header("Location: ../login/login.php");
+            header("Location: ../login/index.php");
             die();
         }
         
         // Redirect user to the home page
-        echo "Login successful!";
         header("Location: ../dashboard/index.php");
         // Start a session
         $newSessionId = session_create_id();
@@ -80,6 +76,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
 } else {
     // Handle the case where the user didn't submit the form
-    header("Location: ../login/login.php");
+    header("Location: ../login/index.php");
     die();
 }

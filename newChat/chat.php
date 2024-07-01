@@ -187,7 +187,7 @@
  </html>
 <?php
   }else{
-  	header("Location: ../login/login.php");
+  	header("Location: ../login/index.php");
    	exit;
   }
  ?>

@@ -28,74 +28,33 @@
             <li class="active"><a href="../dashboard/index.php"><i class='bx bxs-dashboard'></i><span>Dashboard</span></a></li>
             
             <?php if ($_SESSION['user_role'] == 'Admin') { ?>
-            <li>
-                <a href="../signup/signup.php">
-                    <i class='bx bx-user-plus'></i>
-                    <span>Create Account</span>
-                </a>
-            </li>
+            <li><a href="../signup/index.php"><i class='bx bx-user-plus'></i><span>Create Account</span></a></li>
             <?php }?>
 
-            <li>
-                <a href="../sale/viewSale.php">
-                    <i class='bx bx-line-chart' ></i>
-                    <span>Sale</span>
-                </a>
-            </li>
+            <?php if ($_SESSION['user_role'] == 'Admin') { ?>
+            <li><a href="../sale/viewSale.php"><i class='bx bx-line-chart' ></i><span>Sale</span></a></li>
+            <?php }?>
 
             <?php if ($_SESSION['user_role'] == 'Admin') { ?>
-                <li>
-                    <a href="../supplier/addSupplier.php">
-                        <i class='bx bx-package'></i>
-                        <span>Suppliers</span>
-                    </a>
-                </li>
+            <li><a href="../supplier/addSupplier.php"><i class='bx bx-package'></i><span>Suppliers</span></a></li>
             <?php } ?>
 
             <?php if ($_SESSION['user_role'] == 'Admin') { ?> 
-            <li>
-                <a href="../medicine/addMedicine.php">
-                    <i class='bx bxs-capsule' ></i>
-                    <span>Inventory</span>
-                </a>
-            </li>
+            <li><a href="../medicine/addMedicine.php"><i class='bx bxs-capsule' ></i><span>Inventory</span></a></li>
             <?php }
             else {?>
-            <li>
-                <a href="../medicine/viewMedicine.php">
-                    <i class='bx bx-capsule' ></i>
-                    <span>Inventory</span>
-                </a>
-            </li>
+            <li><a href="../medicine/viewMedicine.php"><i class='bx bx-capsule' ></i><span>Inventory</span></a></li>
             <?php } ?> 
 
-            <li>
-                <a href="../customer/addCustomer.php">
-                    <i class='bx bx-street-view'></i>
-                    <span>Customers</span>
-                </a>
-            </li>
+            <li><a href="../customer/addCustomer.php"><i class='bx bx-street-view'></i><span>Customers</span></a></li>
             
-            <li>
-                <a href="../invoice/invoiceForm.php">
-                    <i class='bx bx-credit-card' ></i>
-                    <span>Invoices</span>
-                </a>
-            </li>
+            <li><a href="../invoice/invoiceForm.php"><i class='bx bx-credit-card' ></i><span>Invoices</span></a></li>
 
-            <li>
-                <a href="../newChat/chat.php">
-                    <i class='bx bx-conversation' ></i>
-                    <span>Messages</span>
-                </a>
-            </li>
+            <li><a href="../newChat/chat.php"><i class='bx bx-conversation' ></i><span>Messages</span></a></li>
+
             <?php if ($_SESSION['user_role'] == 'Admin') { ?> 
-            <li>
-                <a href="../employee/viewPharmacist.php">
-                    <i class='bx bx-group' ></i>
-                    <span>Employee</span>
-                </a>
-            </li>
+            <li><a href="../employee/viewPharmacist.php"><i class='bx bx-group' ></i><span>Employee</span></a></li>
+
             <?php } ?>
             <li class="logout">
                 <form action="../include/logout.inc.php" method="post">
@@ -237,7 +196,8 @@
                             Inventory
                         </div>
                         <div class="qc--button-container">
-                            <button class="qc--button">View Details</button>
+                            <a href="../medicine/viewMedicine.php"><button class="qc--button">View Details</button></a>
+                            
                         </div>
                     </div>
                     <div class="qc--amounts">
@@ -272,7 +232,8 @@
                             Quick Report
                         </div>
                         <div class="qc--button-container">
-                            <button class="qc--button">View Details</button>
+                            <a href="../sale/viewSale.php">
+                            <button class="qc--button">View Details</button></a>
                         </div>
                     </div>
                     <div class="qc--amounts">
@@ -307,7 +268,7 @@
                             Medicine Status
                         </div>
                         <div class="qc--button-container">
-                            <button class="qc--button">View Details</button>
+                            <a href="../medicine/viewMedicine.php?filter=expired"><button class="qc--button">View Details</button></a>
                         </div>
                     </div>
                     <div class="qc--amounts">
@@ -357,7 +318,8 @@
                             My Pharmacy
                         </div>
                         <div class="qc--button-container">
-                            <button class="qc--button">View Details</button>
+                            <a href="../employee/viewPharmacist.php">
+                            <button class="qc--button">View Details</button></a>
                         </div>
                     </div>
                     <div class="qc--amounts">
@@ -390,7 +352,7 @@
 
 <?php  
     } else {
-        header("Location: ../login/login.php");
+        header("Location: ../login/index.php");
         exit();
     }
 ?>

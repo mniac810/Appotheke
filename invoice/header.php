@@ -18,25 +18,46 @@
         </div>
         <ul class="menu">
             <li><a href="../dashboard/index.php"><i class='bx bxs-dashboard'></i><span>Dashboard</span></a></li>
-            <li><a href="../signup/signup.php"><i class='bx bx-user'></i><span>Create Account</span></a></li>
-            <li><a href="../sale/viewSale.php"><i class='bx bx-line-chart'></i><span>Sale</span></a></li>
-            <li><a href="../supplier/addSupplier.php"><i class='bx bx-user-plus'></i><span>Suppliers</span></a></li>
-            <li><a href="../medicine/addMedicine.php"><i class='bx bxs-capsule'></i><span>Inventory</span></a></li>
-            <li>
-                <a href="../customer/addCustomer.php">
-                    <i class='bx bx-cog' ></i>
-                    <span>Customers</span>
-                </a>
+            
+            <?php if ($_SESSION['user_role'] == 'Admin') { ?>
+            <li><a href="../signup/index.php"><i class='bx bx-user-plus'></i><span>Create Account</span></a></li>
+            <?php }?>
+
+            <?php if ($_SESSION['user_role'] == 'Admin') { ?>
+            <li><a href="../sale/viewSale.php"><i class='bx bx-line-chart' ></i><span>Sale</span></a></li>
+            <?php }?>
+
+            <?php if ($_SESSION['user_role'] == 'Admin') { ?>
+            <li><a href="../supplier/addSupplier.php"><i class='bx bx-package'></i><span>Suppliers</span></a></li>
+            <?php } ?>
+
+            <?php if ($_SESSION['user_role'] == 'Admin') { ?> 
+            <li><a href="../medicine/addMedicine.php"><i class='bx bxs-capsule' ></i><span>Inventory</span></a></li>
+            <?php }
+            else {?>
+            <li><a href="../medicine/viewMedicine.php"><i class='bx bx-capsule' ></i><span>Inventory</span></a></li>
+            <?php } ?> 
+
+            <li><a href="../customer/addCustomer.php"><i class='bx bx-street-view'></i><span>Customers</span></a></li>
+            
+            <li class="active"><a href="../invoice/invoiceForm.php"><i class='bx bx-credit-card' ></i><span>Invoices</span></a></li>
+
+            <li><a href="../newChat/chat.php"><i class='bx bx-conversation' ></i><span>Messages</span></a></li>
+
+            <?php if ($_SESSION['user_role'] == 'Admin') { ?> 
+            <li><a href="../employee/viewPharmacist.php"><i class='bx bx-group' ></i><span>Employee</span></a></li>
+
+            <?php } ?>
+            <li class="logout">
+                <form action="../include/logout.inc.php" method="post">
+                    <button type="submit" name="logout-submit" class="logout">
+                        <a href="#">
+                            <i class='bx bx-log-out bx-rotate-180' ></i>
+                            <span>Logout</span>
+                        </a>
+                    </button>
+                </form>
             </li>
-            <li class="active"><a href="#"><i class='bx bx-credit-card'></i><span>Invoices</span></a></li>
-            <li><a href="../newChat/chat.php"><i class='bx bx-conversation'></i><span>Messages</span></a></li>
-            <li>
-                <a href="../employee/viewPharmacist.php">
-                    <i class='bx bx-user-plus'></i>
-                    <span>Employee</span>
-                </a>
-            </li>
-            <li class="logout"><a href="#"><i class='bx bx-log-out bx-rotate-180'></i><span>Logout</span></a></li>
         </ul>
     </div>
 

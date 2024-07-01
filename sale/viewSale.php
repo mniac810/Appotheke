@@ -13,8 +13,6 @@
                 </a>
             </li>
         <?php } ?>
-        
-        
     </ul>
 </div>
 <body>
@@ -106,7 +104,7 @@
             echo '<h4>No invoice found.</h4>';
         }
         }else {
-            header("Location: ../login/login.php");
+            header("Location: ../login/index.php");
         }
 ?>
 

@@ -103,6 +103,6 @@ include('../medicine/header.php');
 </html>
 <?php
     }else {
-        header("Location: ../login/login.php");
+        header("Location: ../login/index.php");
     }
 ?>

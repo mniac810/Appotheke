@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // session_start();
 require_once('../include/config_session.inc.php');
 if (isset($_SESSION['user_username']) && $_SESSION['user_role'] == 'Admin') {
-include('../supplier/header.html');
+include('../supplier/header.php');
 ?>
 
     <div class="main--content">
@@ -126,6 +126,6 @@ include('../supplier/header.html');
 </html>
 <?php
     }else {
-        header("Location: ../login/login.php");
+        header("Location: ../login/index.php");
     }
 ?>

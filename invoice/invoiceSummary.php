@@ -61,6 +61,25 @@
             margin-bottom: 10px !important; /* Add some spacing between cards */
             margin-left: 0px !important; /* Add some spacing between cards */
             margin-right: 0px !important; /* Add some spacing between cards */
+            white-space: normal !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+        }
+
+        .main--content .card div, .main--content .card span, .main--content .card p, .main--content .card h1, .main--content .card h2, .main--content .card h3, .main--content .card h4, .main--content .card h5, .main--content .card h6 {
+            white-space: normal !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+        }
+
+        .main--content table, .main--content td, .main--content th {
+            word-wrap: break-word !important;
+            white-space: normal !important;
+        }
+
+        .main--content .item-description {
+            word-wrap: break-word !important;
+            white-space: normal !important;
         }
 
         /* Hide the header and footer if they exist */
@@ -245,7 +264,7 @@
 
 <?php
     } else {
-        header("Location: ../login/login.php");
+        header("Location: ../login/index.php");
         exit();
     }
     include('footer.html');  

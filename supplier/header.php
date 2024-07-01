@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Pharmacy Management System - Appotheke</title>
+    <title>Dashboard Design</title>
     <link rel="stylesheet" href="view_style.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
@@ -19,7 +19,6 @@
         </div>
         <ul class="menu">
             <li><a href="../dashboard/index.php"><i class='bx bxs-dashboard'></i><span>Dashboard</span></a></li>
-            <li><a href="../dashboard/index.php"><i class='bx bxs-dashboard'></i><span>Dashboard</span></a></li>
             
             <?php if ($_SESSION['user_role'] == 'Admin') { ?>
             <li><a href="../signup/index.php"><i class='bx bx-user-plus'></i><span>Create Account</span></a></li>
@@ -30,19 +29,14 @@
             <?php }?>
 
             <?php if ($_SESSION['user_role'] == 'Admin') { ?>
-            <li><a href="../supplier/addSupplier.php"><i class='bx bx-package'></i><span>Suppliers</span></a></li>
+            <li class="active"><a href="../supplier/addSupplier.php"><i class='bx bx-package'></i><span>Suppliers</span></a></li>
             <?php } ?>
 
             <?php if ($_SESSION['user_role'] == 'Admin') { ?> 
-            <li class="active">
-                <a href="../medicine/addMedicine.php">
-                    <i class='bx bx-capsule' ></i>
-                    <span>Inventory</span>
-                </a>
-            </li>
+            <li><a href="../medicine/addMedicine.php"><i class='bx bxs-capsule' ></i><span>Inventory</span></a></li>
             <?php }
             else {?>
-            <li  class="active"><a href="../medicine/viewMedicine.php"><i class='bx bx-capsule' ></i><span>Inventory</span></a></li>
+            <li><a href="../medicine/viewMedicine.php"><i class='bx bx-capsule' ></i><span>Inventory</span></a></li>
             <?php } ?> 
 
             <li><a href="../customer/addCustomer.php"><i class='bx bx-street-view'></i><span>Customers</span></a></li>
@@ -66,5 +60,4 @@
                 </form>
             </li>
         </ul>
-
     </div>
